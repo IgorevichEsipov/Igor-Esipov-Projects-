@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<Title> "My Snake Game" </Title>
+<link href="https://fonts.googleapis.com/css?family=Antic+Slab" rel="stylesheet">
+<head>
+<Body>
+
+
+ <canvas id ="snakeboard" width="400" height="400"></canvas>
+
+ <style>
+     #snakeboard {
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+
+     }
+     </style>
+     </Body>
+
+     <script>
+         const board_border = 'pink';
+         const board_background = 'white'
+         const snake_col = 'black'
+         const snake_border = 'pink'
+
+         let snake = [
+             {x: 200, y: 200},
+             {x: 190, y: 200},
+             {x: 170, y: 200},
+             {x: 160, y: 200},
+         ]
+         const snakeboard = document.getElementById("snakeboard");
+         const snakeboard_ctx = snakeboard.getContext("2d");
+
+         main();
+         function main() {
+             clearCanvas();
+             drawSnake();
+         }
+
+         function clearCanvas(){
+             snakeboard_ctx.fillStyle = board_background;
+             snakeboard_ctx.strokestyle = board_border;
+             snakeboard_ctx.fillRect(0, 0, snakeboard.width, snakeboard.height);
+             snakeboard_ctx.strokeRect(0, 0, snakeboard.width, snakeboard.height);
+         }
+         function drawSnakePart(snakePart) {
+             snakeboard_ctx.fillStyle = snake_col;
+             snakeboard_ctx.strokestyle = snake_border;
+             snakeboard_ctx.fillRect(snakePart.x, snakePart.y, 10,10);
+             snakeboard_ctx.strokeRect(snakePart.x, snakePart.y, 10, 10);
+         }
+     </script>
+
+ </script>
