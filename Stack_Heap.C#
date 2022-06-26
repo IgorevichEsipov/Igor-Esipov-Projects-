@@ -1,0 +1,55 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+struct Employee
+{
+  int id;
+  int basePay;
+  int incentive;
+};
+
+int
+main ()
+{
+  //stack array of Employees
+  struct Employee stackArray[1000];
+  int i, n;
+  printf ("Enter number of elements you want to populate: ");
+  scanf ("%d", &n);
+  for (i = 0; i < n; i++)
+    {
+      printf
+	("Enter ID, basePay and incentive of Employee-%d in stack array \n",
+	 i + 1);
+      scanf ("%d %d %d", &stackArray[i].id, &stackArray[i].basePay,
+	     &stackArray[i].incentive);
+    }
+  printf ("The data in stack array is: \n");
+  for (i = 0; i < n; i++)
+    {
+      printf
+	(" Employee %d : EmployeeID = %d , Base Pay = %d , Incentive = %d \n",
+	 i + 1, stackArray[i].id, stackArray[i].basePay,
+	 stackArray[i].incentive);
+    }
+  // dynamic array
+  struct Employee *DynamicArray;	//pointer variable allocated to heap space
+  DynamicArray = malloc (n * sizeof (struct Employee));
+  for (i = 0; i < n; i++)
+    {
+      // assign each element of ststic array to dynamic array
+      DynamicArray[i].id = stackArray[i].id;
+      DynamicArray[i].basePay = stackArray[i].basePay;
+      DynamicArray[i].incentive = stackArray[i].incentive;
+    }
+  printf ("\n After copying value from stack array to heap array:\n");
+  for (i = 0; i < n; i++)
+    {
+      printf
+	("In heap- Employee %d : EmployeeID = %d , Base Pay = %d , Incentive = %d \n",
+	 i + 1, DynamicArray[i].id, DynamicArray[i].basePay,
+	 DynamicArray[i].incentive);
+    }
+  return 0;
+}
+
